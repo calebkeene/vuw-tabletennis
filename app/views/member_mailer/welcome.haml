@@ -1,0 +1,7 @@
+%p= "Hello #{@member.try(:first_name) || @member.email}!"
+
+%p
+  Thanks for joining the Victoria University Table Tennis Club!
+
+
+%p= link_to 'Click here for the latest news', latest_news_member_url(@member), class: 'btn btn-default'

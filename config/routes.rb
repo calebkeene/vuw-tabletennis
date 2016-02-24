@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  
+  root 'members#signups_home'
+
+  resources :members, only: [:index, :new, :create] do
+    member do
+      get :signups_home
+      get :latest_news
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
