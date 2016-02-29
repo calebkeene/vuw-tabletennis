@@ -1,18 +1,13 @@
 !!!
 %html
-	%head
-  	%title
-  		VuwTabletennis
-  	= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-  	= javascript_include_tag 'application', 'data-turbolinks-track' => true
-  	= csrf_meta_tags
-	%body
+  %head
+    %title
+      VUW Table Tennis
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Open+Sans', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
     %header
-      %nav.navbar-wrapper
-        .navbar.navbar-default.navbar-static-top
-          .container-fluid
-            %a.navbar-brand{:href => "/"} Jasper
-
       .content-wrapper
         .layout--content
           .col-md-12
@@ -22,3 +17,6 @@
             - if alert
               .alert.alert-warning
                 = alert
+
+          .col-md-6.col-md-offset-3
+            = yield

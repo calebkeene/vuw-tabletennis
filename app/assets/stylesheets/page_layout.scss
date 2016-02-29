@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-grow: 1;
+}
+
+.layout--content {
+  flex-grow: 1;
+  position: relative;
+  width: 100%;
+  table-layout: fixed;
+}

@@ -1,4 +1,4 @@
-class MembersController < ActionController::Base
+class MembersController < ApplicationController
 
 	def index
 		@members = Member.all
@@ -8,16 +8,17 @@ class MembersController < ActionController::Base
 		@member = get_member
 	end
 
-	def new
+	def signups_home
 		@member = Member.new
 	end
 
 	def create
-		@member = get_member
+		@member = Member.new(member_params)
 		if @member.save!
-			redirect_to signups_home_member_path(member: @member), notice: "Thanks #{@member.name}, you're all signed up!"
+			MemberMailer.welcome(@member).deliver_now!
+			redirect_to signups_home_member_path(id: @member), notice: "Thanks #{@member.first_name}, you're all signed up!"
 		else
-			redirect_to signups_home_member_path, error: "Error with signup"
+			redirect_to signups_home_member_path(id: @member), error: "Error with signup"
 		end
 	end
 
@@ -28,7 +29,7 @@ class MembersController < ActionController::Base
 
 	def member_params
 		params.require(:member).permit(
-			:first_name, :last_name, :age, :email, :gender, :experience
+			:first_name, :last_name, :age, :email, :student_id, :gender, :experience
 		)
 	end
 end

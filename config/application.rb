@@ -12,7 +12,7 @@ HOSTNAME = ENV['HOSTNAME']
 
 module VuwTabletennis
   class Application < Rails::Application
-    
+    config.autoload_paths += %w(#{Rails.root}/app/controllers)
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
